@@ -1,8 +1,6 @@
 package com.assignment4_2;
 import java.util.*;
 
-import com.assignment4_1.AccountType;
-
 //same as the Employee class defined in the lecture
 class Employee {
 	
@@ -27,16 +25,16 @@ class Employee {
 	}
 	public void createNewChecking(double startAmount) {
 		// implement
-		checkingAcct = new Account(this, "CHECKING", startAmount);
+		checkingAcct = new Account(this, AccountType.CHECKING, startAmount);
 		
 	}
 	public void createNewSavings(double startAmount) {
 		// implement
-		savingsAcct = new Account(this, "SAVINGS", startAmount);
+		savingsAcct = new Account(this, AccountType.SAVINGS, startAmount);
 	}
 	public void createNewRetirement(double startAmount) {
 		// implement
-		retirementAcct = new Account(this, "RETIREMENT", startAmount);
+		retirementAcct = new Account(this, AccountType.RETIREMENT, startAmount);
 	}
 
 	public void deposit(AccountType acctType, double amt){

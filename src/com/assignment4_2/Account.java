@@ -1,34 +1,32 @@
 package com.assignment4_2;
 
-import com.assignment4_1.AccountType;
-
 class Account {
 //	public final static String CHECKING = "checking";
 //	public final static String SAVINGS = "savings";
 //	public final static String RETIREMENT = "retirement";
 	private final static double DEFAULT_BALANCE = 0.0;
 	private double balance;
-	private String acctType;
+	private AccountType acctType;
 	private Employee employee;
 	
 	// Constructor
-	Account(Employee emp, String acctType, double balance){
+	Account(Employee emp, AccountType acctType, double balance){
 		this.employee = emp;
 		this.acctType =acctType;
 		this.balance = balance;
 	}
 	
 	// Constructor
-	Account(Employee emp, String acctType){
+	Account(Employee emp, AccountType acctType){
 		this(emp,acctType,DEFAULT_BALANCE);
 	}
 	
 	public String toString() {
-		return "type: "+acctType+", balance: "+balance;
+		return "Customer Name: "+employee.getName()+", Accnt Type: "+this.acctType+", Available Balance: "+this.balance+" USD";
 	}
 	
 	// accessor method for acctType
-	public String getAcctType() {
+	public AccountType getAcctType() {
 		return acctType;
 	}
 	
@@ -68,15 +66,20 @@ class Account {
 	
 	public double computeInterest() {
 		
-		if (acctType.equalsIgnoreCase(AccountType.CHECKING.toString())) {
-			return balance * 0.02;
-		} else if (acctType.equalsIgnoreCase(AccountType.SAVINGS.toString())) {
-			return balance * 0.04;
-		} else if (acctType.equalsIgnoreCase(AccountType.RETIREMENT.toString())) {
-			return balance * 0.05;
-		} else {
-			System.out.println("Invalid Entry!");
-			return -1.0;
+		switch(acctType){
+			case CHECKING :{
+				return balance * 0.02;
+			} 
+			case SAVINGS :{
+				return balance * 0.04;
+			} 
+			case RETIREMENT :{
+				return balance * 0.05;
+			} 
+			default: {
+				System.out.println("Invalid Entry!");
+				return -1.0;
+			}
 		}
 	}
 }
